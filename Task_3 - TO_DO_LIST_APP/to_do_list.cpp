@@ -56,6 +56,26 @@ void addtask(){
 
     cout << "Task marked as completed!" << endl;
 }
+void deleteTask() {
+    if (tasks.empty()) {
+        cout << "No tasks available." << endl;
+        return;
+    }
+
+    int taskNumber;
+
+    cout << "Enter task number to delete: ";
+    cin >> taskNumber;
+
+    if (taskNumber < 1 || taskNumber > tasks.size()) {
+        cout << "Invalid task number!" << endl;
+        return;
+    }
+
+    tasks.erase(tasks.begin() + (taskNumber - 1));
+
+    cout << "Task deleted successfully!" << endl;
+}
 int main(){
     
     int choice;
@@ -64,7 +84,8 @@ cout << "===== TO-DO LIST =====" << endl;
 cout << "1. Add Task" << endl;
 cout << "2. View Tasks" << endl;
 cout << "3. Mark Task as Complete" << endl;
-cout << "4. Exit" << endl;
+cout << "4. Delete task " << endl;
+cout << "5. Exit" << endl;
 cout << "Enter your choice: ";
 cin >> choice;
   
@@ -83,8 +104,12 @@ switch (choice) {
         cout << "Mark Task as Complete selected." << endl;
         completeTask();
         break;
-
     case 4:
+        cout << " Select Task to delete. " <<endl; 
+        deleteTask();
+        break;   
+
+    case 5:
         cout << "Exiting..." << endl;
         return 0;
         break;
